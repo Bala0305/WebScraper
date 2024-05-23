@@ -22,10 +22,10 @@ class TestSleepAidScraper(unittest.TestCase):
         # Create a sample BeautifulSoup object with HTML content
         html_content = """
         <div class="oct-teaser__contents-panel--main-content">
-            <h3 class="oct-teaser__title">Boots Sleepeaze Lavender Pillow Mist 100ml</h3>
-            <p class="oct-teaser__productPrice">£6.0</p>
-            <div class="oct-reviews__optionalText"><a aria-label="2.38 out of 5"></a></div>
-            <a class = "oct-teaser__title-link" href="./products/Boots Sleepeaze Lavender Pillow Mist 100ml - Boots.html">Link to Product 1</a>
+            <h3 class="oct-teaser__title">Bach Rescue Remedy Night Dropper 10ml - Flower Essences for Natural Night's Sleep</h3>
+            <p class="oct-teaser__productPrice">£9.5</p>
+            <div class="oct-reviews__optionalText"><a aria-label="4.5 out of 5"></a></div>
+            <a class = "oct-teaser__title-link" href="./products/Bach Rescue Night Dropper - 10ml - Boots.html">Link to Product 1</a>
         </div>
         """
         soup = BeautifulSoup(html_content, 'lxml')
@@ -35,12 +35,12 @@ class TestSleepAidScraper(unittest.TestCase):
 
         # Check if product details are extracted correctly
         self.assertEqual(len(product_list), 1)
-        self.assertEqual(product_list[0]['Title'], 'Boots Sleepeaze Lavender Pillow Mist 100ml')
-        self.assertEqual(product_list[0]['Price'], 6.0)
+        self.assertEqual(product_list[0]['Title'], "Bach Rescue Remedy Night Dropper 10ml - Flower Essences for Natural Night's Sleep")
+        self.assertEqual(product_list[0]['Price'], 9.5)
         self.assertEqual(product_list[0]['Price_Unit'], '£')
-        self.assertEqual(product_list[0]['Rating'], 2.38)
-        self.assertEqual(product_list[0]['Short_Desc'], '')  # Assuming extract_short_description_and_size returns empty string
-        self.assertEqual(product_list[0]['Page_Size'], 1884)  # Assuming extract_short_description_and_size returns 0 KB
+        self.assertEqual(product_list[0]['Rating'], 4.5)
+        self.assertEqual(product_list[0]['Short_Desc'], "Bach Rescue Remedy Night Dropper 10ml - Flower Essences for Natural Night's Sleep")  # Assuming extract_short_description_and_size returns empty string
+        self.assertEqual(product_list[0]['Page_Size'], 1799)  # Assuming extract_short_description_and_size returns 0 KB
 
         # print("Success: test_extract_product_info passed. \n")
 
