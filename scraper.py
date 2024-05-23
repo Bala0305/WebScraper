@@ -89,7 +89,6 @@ def extract_short_description_and_size(product_file_name):
         try:
             product_text = product_detail.find('div',class_ = 'product_text')
             short_description = product_text.find('p',itemprop = 'description').text
-            print("available")
         except:
             short_description = ""
             logging.warning("Defaulting short_description to empty string")
