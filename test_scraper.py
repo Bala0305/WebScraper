@@ -58,17 +58,21 @@ class TestSleepAidScraper(unittest.TestCase):
         # Call the function with sample data
         write_to_json(product_list_details, json_file_name)
 
+        current_working_directory = os.getcwd()
+        output_folder_path = os.path.join(current_working_directory,"output")
+        output_json_file_path = os.path.join(output_folder_path,json_file_name)
+
         # Check if the JSON file was created successfully
-        self.assertTrue(os.path.exists(json_file_name))
+        self.assertTrue(os.path.exists(output_json_file_path))
 
         # Check if the JSON file contains the expected data
-        with open(json_file_name, 'r') as json_file:
+        with open(output_json_file_path, 'r') as json_file:
             data = json.load(json_file)
             self.assertIn('Products', data)
             self.assertIn('Median', data)
             self.assertEqual(len(data['Products']), len(product_list_details))
 
-        os.remove(json_file_name) # Clean up: remove the created JSON file
+        os.remove(output_json_file_path) # Clean up: remove the created JSON file
         # print("Success: test_write_to_json passed. \n")
 
     def test_find_median(self):
