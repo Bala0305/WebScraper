@@ -8,3 +8,4 @@ To run this script, you need Python installed on your system along with the requ
 
 ```bash
 pip install beautifulsoup4
+pip install lxml
