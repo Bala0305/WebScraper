@@ -92,7 +92,7 @@ def extract_short_description_and_size(product_file_name):
             print("available")
         except:
             short_description = ""
-            print("not available")
+            logging.warning("Defaulting short_description to empty string")
 
         size = len(str(product_detail).encode('utf-8'))/1024 # Calculate the size of the page in kilobytes (KB)
 
@@ -101,7 +101,7 @@ def extract_short_description_and_size(product_file_name):
     
     except Exception as ex:
         logging.warning("fallback enabled as {0}.".format(str(ex)))
-        logging.warning("Defaulting Short_discription and Size.")
+        logging.warning("Defaulting Short_description to empty string and Size to 0.")
         return "" , 0  # Return default values: an empty short description and size 0 KB
     
 def write_to_json(product_list_details,json_file_name):
