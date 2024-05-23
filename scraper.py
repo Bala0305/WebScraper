@@ -110,7 +110,12 @@ def write_to_json(product_list_details,json_file_name):
     Parameters: product_list_details (list of dict): List of dictionaries containing product details.
                 json_file_name (str): The name of JSON file to write the data to.
     """
-    logging.info("Writing the data to Json {0}.".format(json_file_name))
+
+    current_working_directory = os.getcwd()
+    output_folder_path = os.path.join(current_working_directory,"output")
+    output_json_file_path = os.path.join(output_folder_path,json_file_name)
+
+    logging.info("Writing the data to Json {0}.".format(output_json_file_path))
 
     price_list = sorted([x['Price'] for x in product_list_details])
     median = find_median(price_list) # Calculate the median price from the sorted list
@@ -121,15 +126,18 @@ def write_to_json(product_list_details,json_file_name):
         'Median' : median
     }
 
+    if not os.path.exists(output_folder_path):
+        os.makedirs(output_folder_path)
+
     # Remove the existing JSON file if it exists
-    if os.path.exists(json_file_name):
-        os.remove(json_file_name)
+    if os.path.exists(output_json_file_path):
+        os.remove(output_json_file_path)
 
     # Open the JSON file in write mode
-    with open (json_file_name,'w',encoding='utf-8') as json_file:
+    with open (output_json_file_path,'w',encoding='utf-8') as json_file:
         json.dump(json_output_data,json_file,indent=4,ensure_ascii=False) # Write the data to the file
 
-    logging.info("Json file generated Successfully.")
+    logging.info("JSON file generated Successfully.")
     
 def find_median(price_list):
     """
@@ -152,7 +160,7 @@ def setup_logging(process_name):
     """
     # Get the current working directory
     current_working_directory = os.getcwd()
-    log_directory = os.path.join(current_working_directory,"Logs")
+    log_directory = os.path.join(current_working_directory,"logs")
 
     # Create the log directory if it does not exist
     if not os.path.exists(log_directory):
