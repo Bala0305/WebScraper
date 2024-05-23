@@ -52,6 +52,7 @@ Description of what the correct output should look like and how to verify it.
 
 - After running the application, you should see a JSON file generated in the output directory 
 - The JSON file will be generated in the below shown structure
+```json
 {
     "Products": [        
         {
@@ -65,13 +66,14 @@ Description of what the correct output should look like and how to verify it.
     ],
     "Median": 11.75
 }
+```
 
 ### Log Files
 
 The application also genereates log files that provide information about the application execution. These log files are typically located in a "logs" directory within the project
 
 Here is an example of what the log file might look like:
-
+```plaintext
 2024-05-23 20:19:23,567:INFO    :Logging initiated to file Sleep_Aid_Scraper_2024-05-23_20936.log.
 2024-05-23 20:19:23,567:INFO    :Web scrap Process started to extract data from Sleep Aid Web.
 2024-05-23 20:19:23,567:INFO    :Started Scraping Data from D:/Assesment/Sleep Aid Clone/Sleep Aid.html.
@@ -81,3 +83,4 @@ Here is an example of what the log file might look like:
 2024-05-23 20:19:24,003:INFO    :Started extracting short description and page size for Product.
 2024-05-23 20:19:24,004:INFO    :Started Scraping Data from ./products/Boots Sleepeaze Tablets 50 mg - 20 Tablets - Boots.html.
 2024-05-23 20:19:24,302:INFO    :Completed scraping data from web.
+```
